@@ -107,7 +107,7 @@ arrBike.forEach(elems => {
     newH.textContent = `Бренд: ${elems.brand}`;
     carList.append(newH); 
     const newP = document.createElement('p');
-    newP.textContent = `Цена: ${elems.price}, количество дверей: ${elems.doors}`;
+    newP.textContent = `Цена: ${elems.price}, максимальная скорость: ${elems.maxSpeed}`;
     carList.append(newP); 
     const newImg = document.createElement('img');
     newImg.classList = 'img';
