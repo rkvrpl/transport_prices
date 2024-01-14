@@ -36,11 +36,11 @@ const data = [
 ];
 
 class Transport{
-    constructor(type, price, brand, image){
+    constructor(type, price, brand){
         this.type = type;
         this.price = price;
         this.brand = brand;
-        this.image = image;
+
     }
     getInfo(){
         return `${this.type}, ${this.brand}`;
@@ -51,8 +51,8 @@ class Transport{
 }
 
 class Car extends Transport{
-    constructor(type, price, brand, image, doors){
-        super(type, price, brand, image)
+    constructor(type, price, brand, doors){
+        super(type, price, brand)
         this.doors = doors;
     }
     getDoorsCount(){
@@ -61,8 +61,8 @@ class Car extends Transport{
 }
 
 class Bike extends Transport{
-    constructor(type, price, brand, image, maxSpeed){
-        super(type, price, brand, image)
+    constructor(type, price, brand, maxSpeed){
+        super(type, price, brand)
         this.maxSpeed = maxSpeed;
     }
     getMaxSpeed(){
@@ -75,15 +75,15 @@ const carList = document.querySelector('.car__list');
 const arrCar = [];
 data.forEach((item) => {
     if(item.type === 'car'){
-    const carObj = new Car(item.type, item.price, item.brand, item.image, item.doors);              // получили массив машин
+    const carObj = new Car(item.type, item.price, item.brand, item.doors);              // получили массив машин
     arrCar.push(carObj);
     }
-    // arrCar.forEach(elems => {
-    //     const newElem = document.createElement('li');
-    //     newElem.textContent = arrCar.getInfo;
-    //     carList.append(arrCar); 
-    // })
-    console.log(arrCar.getInfo())
+    arrCar.forEach(elems => {
+        const newElem = document.createElement('li');
+        newElem.textContent = `${elems.type} ${elems.price} ${elems.brand} ${elems.doors}`;
+        carList.append(newElem); 
+    })
+    //console.log(arrCar.getInfo())
 });
 
 console.log(arrCar[0]);
@@ -92,7 +92,7 @@ console.log(arrCar[0]);
 const arrBike = [];
 data.forEach((item) => {
     if(item.type === 'bike'){
-    const bikeObj = new Bike(item.type, item.price, item.brand, item.image, item.maxSpeed);         // получили массив мотоциклов
+    const bikeObj = new Bike(item.type, item.price, item.brand, item.maxSpeed);         // получили массив мотоциклов
     arrBike.push(bikeObj);
     }
 });
@@ -102,7 +102,7 @@ data.forEach((item) => {
 // const getCarsOnList = (arr) =>{
 //     arr.forEach(elems => {
 //         const newElem = document.createElement('li');
-//         newElem.textContent = `${elems.type} ${elems.price} ${elems.brand} ${elems.image} ${elems.doors}`
+//         newElem.textContent = `${elems.type} ${elems.price} ${elems.brand} ${elems.doors}`
 //     })
 // }
 // carList.append(getCarsOnList(arrCar)); 
